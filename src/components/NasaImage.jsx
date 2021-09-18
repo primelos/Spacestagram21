@@ -1,39 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import { ImageContext } from "../context/ImageContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import Wrap from "./Wrap.jsx";
 
 const NasaImage = () => {
-  const [like, setLike] = useState([]);
-  const [testLike, setTestLike] = useState([]);
-  console.log("like", like);
+  const { imgData, testLike, handleClickLike } = useContext(ImageContext);
 
-  function handleClickLike(fav) {
-    console.log("fav", fav);
-
-    if (like.find(({ date }) => date === fav.date) === undefined) {
-      setLike([...like, fav]);
-    }
-    if (testLike.includes(fav.date)) {
-      setTestLike(
-        testLike.filter((item) => {
-          console.log("hit", typeof item);
-          return item !== fav.date;
-        })
-      );
-    } else {
-      console.log("end");
-      setTestLike([...testLike, fav.date]);
-    }
-  }
-  console.log("testLike", testLike);
-  // let testLike = function() {
-  //   setlike
-  // }
   const settings = {
     dots: true,
     inifinite: true,
@@ -41,43 +16,27 @@ const NasaImage = () => {
     slidesToShow: 2,
     slidesToScroll: 1,
     // autoplay: true,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-  const data = useContext(ImageContext);
-  console.log(testLike.includes(data.date));
 
-  console.log("POUNDS", data);
   return (
     <NasaContainer>
       <Carousel {...settings}>
-        {data.map((img) => (
-          <Wrap key={img.date}>
-            <h3>{img.title}</h3>
-            <ImageContainer>
-              {img.media_type === "image" ? (
-                <img src={img.hdurl} alt="" />
-              ) : (
-                <iframe
-                  width="853"
-                  height="480"
-                  src={img.url}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Embedded youtube"
-                />
-              )}
-            </ImageContainer>
-            <Description>
-              <p>{img.explanation}</p>
-            </Description>
-            <Like>
-              {!testLike.includes(img.date) ? (
-                <FavoriteBorderIcon onClick={(e) => handleClickLike(img)} />
-              ) : (
-                <FavoriteIcon onClick={(e) => handleClickLike(img)} />
-              )}
-            </Like>
-          </Wrap>
+        {imgData.map((img) => (
+          <Wrap
+            key={img.date}
+            nasaData={img}
+            handleClickLike={handleClickLike}
+            testLike={testLike}
+          />
         ))}
       </Carousel>
     </NasaContainer>
@@ -97,14 +56,9 @@ const Carousel = styled(Slider)`
   margin-top: 20px;
 
   & > button {
-    opacity: 0;
     height: 100%;
     width: 5vw;
     z-index: 1;
-    &:hover {
-      opacity: 1;
-      transition: opacity 0.2s ease 0s;
-    }
   }
   ul li button {
     &:before {
@@ -124,37 +78,12 @@ const Carousel = styled(Slider)`
   .slick-next {
     right: -75px;
   }
-`;
-
-const Wrap = styled.div`
-  width: 88% !important;
-  margin: auto;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-direction: column !important;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 4px;
-  img {
-    flex: 1;
-    object-fit: cover;
-    width: 100%;
+  @media screen and (max-width: 481px) {
+    .slick-prev {
+      left: 0px;
+    }
+    .slick-next {
+      right: 0px;
+    }
   }
-`;
-
-const Description = styled.div`
-  height: 320px;
-  width: 95%;
-`;
-
-const Like = styled.div`
-  width: 95%;
 `;
