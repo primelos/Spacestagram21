@@ -3,33 +3,38 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import DateAdapter from "@mui/lab/AdapterMoment";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
+// import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import { endDate } from "../utils/axios";
 import DatePicker from "@mui/lab/DatePicker";
 import Axios from "axios";
 import Wrap from "./Wrap";
 import { ImageContext } from "../context/ImageContext";
 
 const ImageSearch = () => {
-  const [nasaDay, setNasaDay] = useState("2021-09-04");
+  const [nasaDay, setNasaDay] = useState(endDate);
   const { testLike, handleClickLike } = useContext(ImageContext);
 
   function getNewDate(moment) {
-    let year = moment.year();
-    let month = moment.month() + 1;
-    if (String(month).length === 1) {
-      month = ("0" + String(month)).slice(-2);
-    }
-    let day = moment.date();
-    if (String(day).length === 1) {
-      day = ("0" + String(day)).slice(-2);
-    }
+    if (moment !== null) {
+      let year = moment.year();
+      let month = moment.month() + 1;
+      if (String(month).length === 1) {
+        month = ("0" + String(month)).slice(-2);
+      }
+      let day = moment.date();
+      if (String(day).length === 1) {
+        day = ("0" + String(day)).slice(-2);
+      }
 
-    if (
-      String(year).length === 4 &&
-      String(month).length === 2 &&
-      String(day).length === 2
-    ) {
-      setNasaDay(`${year}-${month}-${day}`);
+      if (
+        String(year).length === 4 &&
+        String(month).length === 2 &&
+        String(day).length === 2
+      ) {
+        return setNasaDay(`${year}-${month}-${day}`);
+      }
     }
+    return setNasaDay(endDate);
   }
 
   useEffect(() => {

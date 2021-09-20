@@ -3,7 +3,7 @@ import Axios from "axios";
 let year = new Date().getFullYear();
 let month = new Date().getMonth() + 1;
 let day = new Date().getDate();
-let endDate = String(year) + "-" + String(month) + "-" + String(day);
+export let endDate = String(year) + "-" + String(month) + "-" + String(day);
 
 var dt = new Date(endDate);
 dt.setDate(dt.getDate() - 15);
