@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Wrap from "./Wrap.jsx";
 
 const NasaImage = () => {
-  const { imgData, testLike, handleClickLike } = useContext(ImageContext);
+  const { imgData, saveLike, handleClickLike } = useContext(ImageContext);
 
   const settings = {
     dots: true,
@@ -35,7 +35,7 @@ const NasaImage = () => {
             key={img.date}
             nasaData={img}
             handleClickLike={handleClickLike}
-            testLike={testLike}
+            saveLike={saveLike}
           />
         ))}
       </Carousel>
@@ -57,7 +57,7 @@ const Carousel = styled(Slider)`
 
   & > button {
     height: 100%;
-    width: 5vw;
+    /* width: 5vw; */
     z-index: 1;
   }
   ul li button {
@@ -66,6 +66,24 @@ const Carousel = styled(Slider)`
       color: rgb(150, 158 171);
     }
   }
+
+  ul.slick-dots {
+    bottom: -50px;
+  }
+
+  div.slick-slide.slick-active.slick-current {
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+      1px 42px 20px 5px rgba(0, 0, 0, 0);
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+      1px 42px 20px 5px rgba(0, 0, 0, 0);
+  }
+  div.slick-slide.slick-active {
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+      1px 42px 20px 5px rgba(0, 0, 0, 0);
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+      1px 42px 20px 5px rgba(0, 0, 0, 0);
+  }
+
   li.slick-active button:before {
     color: white;
   }
@@ -73,10 +91,10 @@ const Carousel = styled(Slider)`
     overflow: initial;
   }
   .slick-prev {
-    left: -75px;
+    left: -38px;
   }
   .slick-next {
-    right: -75px;
+    right: -38px;
   }
   @media screen and (max-width: 481px) {
     .slick-prev {

@@ -12,7 +12,7 @@ import { ImageContext } from "../context/ImageContext";
 
 const ImageSearch = () => {
   const [nasaDay, setNasaDay] = useState(endDate);
-  const { testLike, handleClickLike } = useContext(ImageContext);
+  const { saveLike, handleClickLike } = useContext(ImageContext);
 
   function getNewDate(moment) {
     if (moment !== null) {
@@ -34,7 +34,7 @@ const ImageSearch = () => {
         return setNasaDay(`${year}-${month}-${day}`);
       }
     }
-    return setNasaDay(endDate);
+    return setNasaDay(nasaDay);
   }
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const ImageSearch = () => {
       <Wrap
         nasaData={nasaDay}
         handleClickLike={handleClickLike}
-        testLike={testLike}
+        saveLike={saveLike}
       />
     </ImageSearchContainer>
   );

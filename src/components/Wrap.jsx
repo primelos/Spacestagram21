@@ -6,7 +6,7 @@ import styled from "styled-components";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const Wrap = ({ nasaData, handleClickLike, testLike }) => {
+const Wrap = ({ nasaData, handleClickLike, saveLike }) => {
   return (
     <WrapContainer key={nasaData.date}>
       <h3>{nasaData.title}</h3>
@@ -35,7 +35,7 @@ const Wrap = ({ nasaData, handleClickLike, testLike }) => {
         <p>{nasaData.explanation}</p>
       </Description>
       <Like>
-        {!testLike.includes(nasaData.date) ? (
+        {!saveLike.includes(nasaData.date) ? (
           <OpenHeart onClick={(e) => handleClickLike(nasaData)} />
         ) : (
           <ClosdHeart onClick={(e) => handleClickLike(nasaData)} />
@@ -83,14 +83,26 @@ const CreditContainer = styled.div`
 const Description = styled.div`
   flex: 1;
   width: 95%;
+  p {
+    padding-bottom: 100%;
+    margin-bottom: -100%;
+    height: 85vh;
+  }
 `;
 
 const Like = styled.div`
   width: 95%;
+  padding-bottom: 22px;
 `;
 
 const ClosdHeart = styled(FavoriteIcon)`
   color: red;
+  cursor: pointer;
+  font-size: 2rem !important;
 `;
 
-const OpenHeart = styled(FavoriteBorderIcon)``;
+const OpenHeart = styled(FavoriteBorderIcon)`
+  cursor: pointer;
+  color: #ff00004c;
+  font-size: 2rem !important;
+`;

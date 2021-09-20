@@ -7,7 +7,7 @@ import { ImageContext } from "./context/ImageContext";
 function App() {
   const [imgData, setImgData] = useState([]);
   const [like, setLike] = useState([]);
-  const [testLike, setTestLike] = useState([]);
+  const [saveLike, setsaveLike] = useState([]);
 
   useEffect(() => {
     async function nasaApiCall() {
@@ -24,16 +24,33 @@ function App() {
     if (like.find(({ date }) => date === fav.date) === undefined) {
       setLike([...like, fav]);
     }
-    if (testLike.includes(fav.date)) {
-      setTestLike(
-        testLike.filter((item) => {
+    if (saveLike.includes(fav.date)) {
+      setsaveLike(
+        saveLike.filter((item) => {
           return item !== fav.date;
         })
       );
     } else {
-      setTestLike([...testLike, fav.date]);
+      setsaveLike([...saveLike, fav.date]);
     }
   }
+
+  const getLocalSaves = () => {
+    if (localStorage.getItem("saved") === null) {
+      localStorage.setItem("saved", JSON.stringify([]));
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem("saved"));
+      setsaveLike((x) => (x = todoLocal));
+    }
+  };
+  useEffect(() => {
+    getLocalSaves();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(saveLike));
+  }, [saveLike]);
+
   return (
     <div className="App">
       <ImageContext.Provider
@@ -41,8 +58,8 @@ function App() {
           imgData,
           like,
           setLike,
-          testLike,
-          setTestLike,
+          saveLike,
+          setsaveLike,
           handleClickLike,
         }}
       >
