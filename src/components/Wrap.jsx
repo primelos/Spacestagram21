@@ -123,6 +123,7 @@ const ImageContainer = styled.div`
     max-height: 100%;
   }
 `;
+
 const CreditContainer = styled.div`
   width: 95%;
   display: flex;
