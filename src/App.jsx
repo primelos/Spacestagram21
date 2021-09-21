@@ -8,6 +8,7 @@ function App() {
   const [imgData, setImgData] = useState([]);
   const [like, setLike] = useState([]);
   const [saveLike, setsaveLike] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function nasaApiCall() {
@@ -16,9 +17,9 @@ function App() {
     }
 
     nasaApiCall();
-    // return () => {
-    //   cleanup;
-    // };
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
   }, []);
   function handleClickLike(fav) {
     if (like.find(({ date }) => date === fav.date) === undefined) {
@@ -50,7 +51,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(saveLike));
   }, [saveLike]);
-
+  console.log("loading", loading);
   return (
     <div className="App">
       <ImageContext.Provider
@@ -61,6 +62,7 @@ function App() {
           saveLike,
           setsaveLike,
           handleClickLike,
+          loading,
         }}
       >
         <CallNasa />

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import DateAdapter from "@mui/lab/AdapterMoment";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-// import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import { endDate } from "../utils/axios";
 import DatePicker from "@mui/lab/DatePicker";
 import Axios from "axios";
@@ -50,7 +49,7 @@ const ImageSearch = () => {
   return (
     <ImageSearchContainer>
       <TitleContainer>
-        <h2>If the last 15 star dates are not enough search by day!</h2>
+        <h2>Search by date</h2>
       </TitleContainer>
       <DateContainer dateAdapter={DateAdapter}>
         <DatePicker

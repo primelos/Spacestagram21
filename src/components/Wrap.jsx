@@ -33,14 +33,12 @@ const Wrap = ({ nasaData, handleClickLike, saveLike }) => {
       </CreditContainer>
       <Description>
         <p>{nasaData.explanation}</p>
-      </Description>
-      <Like>
         {!saveLike.includes(nasaData.date) ? (
           <OpenHeart onClick={(e) => handleClickLike(nasaData)} />
         ) : (
           <ClosdHeart onClick={(e) => handleClickLike(nasaData)} />
         )}
-      </Like>
+      </Description>
     </WrapContainer>
   );
 };
@@ -64,6 +62,7 @@ const ImageContainer = styled.div`
   height: 480px;
   overflow: hidden;
   border-radius: 4px;
+
   img {
     flex: 1;
     object-fit: cover;
@@ -83,16 +82,12 @@ const CreditContainer = styled.div`
 const Description = styled.div`
   flex: 1;
   width: 95%;
+  min-height: 560px;
   p {
-    padding-bottom: 100%;
-    margin-bottom: -100%;
-    height: 85vh;
+    /* padding-bottom: 100%;
+    margin-bottom: -100%; */
+    /* height: 478px; */
   }
-`;
-
-const Like = styled.div`
-  width: 95%;
-  padding-bottom: 22px;
 `;
 
 const ClosdHeart = styled(FavoriteIcon)`
