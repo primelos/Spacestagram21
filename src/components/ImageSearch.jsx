@@ -59,11 +59,13 @@ const ImageSearch = () => {
           renderInput={(params) => <TextField {...params} />}
         />
       </DateContainer>
-      <Wrap
-        nasaData={nasaDay}
-        handleClickLike={handleClickLike}
-        saveLike={saveLike}
-      />
+      <WrapContainer>
+        <Wrap
+          nasaData={nasaDay}
+          handleClickLike={handleClickLike}
+          saveLike={saveLike}
+        />
+      </WrapContainer>
     </ImageSearchContainer>
   );
 };
@@ -99,4 +101,15 @@ const DateContainer = styled(LocalizationProvider)`
   align-items: center;
   text-align: center !important;
   padding-bottom: 50px;
+`;
+
+const WrapContainer = styled.div`
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    1px 42px 20px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    1px 42px 20px 5px rgba(0, 0, 0, 0);
 `;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ImageSearch from "./ImageSearch";
 import { ImageContext } from "../context/ImageContext";
 import { css } from "@emotion/react";
-import CircleLoader from "react-spinners/CircleLoader";
+import RingLoader from "react-spinners/RingLoader";
 
 const CallNasa = () => {
   let [color, setColor] = useState("#ee0e0e");
@@ -23,12 +23,7 @@ const CallNasa = () => {
       </TitleContainer>
 
       {loading ? (
-        <CircleLoader
-          color={color}
-          loading={loading}
-          css={override}
-          size={180}
-        />
+        <RingLoader color={color} loading={loading} css={override} size={100} />
       ) : (
         <NasaImage />
       )}
