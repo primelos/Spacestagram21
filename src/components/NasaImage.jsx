@@ -7,7 +7,8 @@ import styled from "styled-components";
 import Wrap from "./Wrap.jsx";
 
 const NasaImage = () => {
-  const { imgData, saveLike, handleClickLike } = useContext(ImageContext);
+  const { imgData, saveLike, handleClickLike, loading } =
+    useContext(ImageContext);
 
   const settings = {
     dots: true,
@@ -15,7 +16,7 @@ const NasaImage = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 480,
@@ -76,12 +77,14 @@ const Carousel = styled(Slider)`
       1px 42px 20px 5px rgba(0, 0, 0, 0);
     box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
       1px 42px 20px 5px rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 5px;
   }
   div.slick-slide.slick-active {
     -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
       1px 42px 20px 5px rgba(0, 0, 0, 0);
     box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
       1px 42px 20px 5px rgba(0, 0, 0, 0);
+    border-bottom-right-radius: 4px;
   }
 
   li.slick-active button:before {
