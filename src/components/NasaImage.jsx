@@ -16,7 +16,7 @@ const NasaImage = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: true,
+    // autoplay: true,
     responsive: [
       {
         breakpoint: 480,
@@ -99,6 +99,11 @@ const Carousel = styled(Slider)`
   .slick-next {
     right: -38px;
   }
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
+
   @media screen and (max-width: 481px) {
     .slick-prev {
       left: 0px;

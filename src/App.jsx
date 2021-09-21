@@ -51,7 +51,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(saveLike));
   }, [saveLike]);
-  console.log("loading", loading);
   return (
     <div className="App">
       <ImageContext.Provider
