@@ -1,3 +1,31 @@
+# Spacestagram
+
+Front End Developer Intern Challenge - Winter 2022
+
+## Description
+Web App renders 15 most recent nasa images / videos.  Images are on a slider displaying two images at a time. Images can be clicked on to view full image.  Each image can be liked or unliked. With page refresh likes are saved using local storage. You can also search nasa's api by date to find specific date searches.
+### Mobile 
+- Mobile friendly only
+## API 
+- API calls to [Nasa api](https://api.nasa.gov/)
+
+## Library's used
+- React Slick
+- React Spinner
+- Slick Carousel
+- Moment.js
+- Axios
+
+## Styles
+- Material UI
+- Styled Components
+- Emotion
+
+## State Management
+- useState
+- useContext
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
