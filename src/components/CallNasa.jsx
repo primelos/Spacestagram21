@@ -21,13 +21,11 @@ const CallNasa = () => {
         <h1>Welcome to Spacetagram</h1>
         <h3>enjoy images and videos...</h3>
       </TitleContainer>
-
       {loading ? (
         <RingLoader color={color} loading={loading} css={override} size={100} />
       ) : (
         <NasaImage />
       )}
-
       <ImageSearch />
     </CallContainer>
   );

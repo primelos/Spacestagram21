@@ -7,8 +7,7 @@ import styled from "styled-components";
 import Wrap from "./Wrap.jsx";
 
 const NasaImage = () => {
-  const { imgData, saveLike, handleClickLike, loading } =
-    useContext(ImageContext);
+  const { imgData, saveLike, handleClickLike } = useContext(ImageContext);
 
   const settings = {
     dots: true,
@@ -60,6 +59,7 @@ const Carousel = styled(Slider)`
     /* width: 5vw; */
     z-index: 1;
   }
+
   ul li button {
     &:before {
       font-size: 10px;
