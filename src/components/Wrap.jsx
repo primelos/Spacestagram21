@@ -52,7 +52,7 @@ const Wrap = ({ nasaData, handleClickLike, saveLike }) => {
         {nasaData.media_type === "image" ? (
           <img src={nasaData.url} alt={nasaData.title} onClick={handleOpen} />
         ) : (
-          <iframe
+          <VideoFrame
             width="853"
             height="480"
             src={nasaData.url}
@@ -133,11 +133,6 @@ const Description = styled.div`
   flex: 1;
   width: 95%;
   min-height: 560px;
-  p {
-    /* padding-bottom: 100%;
-    margin-bottom: -100%; */
-    /* height: 478px; */
-  }
 `;
 
 const ClosdHeart = styled(FavoriteIcon)`
@@ -172,4 +167,11 @@ const BoxContainer = styled(Box)`
   border-radius: 4px;
   padding-bottom: 12px !important;
   outline: none;
+`;
+
+const VideoFrame = styled.iframe`
+  width: 853px;
+  @media screen and (max-width: 481px) {
+    width: auto !important;
+  }
 `;

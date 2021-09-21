@@ -16,7 +16,6 @@ const NasaImage = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    // autoplay: true,
     responsive: [
       {
         breakpoint: 480,
@@ -77,7 +76,7 @@ const Carousel = styled(Slider)`
       1px 42px 20px 5px rgba(0, 0, 0, 0);
     box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
       1px 42px 20px 5px rgba(0, 0, 0, 0);
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 4px;
   }
   div.slick-slide.slick-active {
     -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
